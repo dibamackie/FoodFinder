@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Contact Us</title>
+    <style>
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: rgb(255, 255, 151);;
+        }
+        
+        h2 {
+            padding-bottom: 30px;
+    text-align: center; /* Center the text */
+    color: #412d01; /* Change the text color to black */
+    font-size: 2em; /* Increase the font size */
+    margin-top: 30px; /* Add some space at the top */
+    font-family: 'Roboto', sans-serif; /* Change the font to Roboto */
+    text-transform: uppercase; /* Make the text uppercase */
+    letter-spacing: 1.5px; /* Increase the spacing between letters */
+    line-height: 1.2; /* Adjust the line height */
+    
+}
+
+
+        #maincontainer {
+
+            width: 650px;
+            margin: auto;
+            background-color: #8e7433;
+            padding-top: 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px 0 rgba(146, 73, 1, 0.2);
+        }
+        #maincontainer:hover {
+            background-color: rgb(255, 255, 151);;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 130%;
+        }
+        
+        input[type="text"], input[type="tel"], input[type="email"], textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #FF8C00;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        fieldset {
+            width: 420px;
+            border-color: #FF8C00;
+            color: #333;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        legend {
+            color: #241605ce;
+            font-weight: bold;
+            padding: 10px;
+        }
+        
+        input[type="submit"] {
+            background-color: #be5412;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #FFA500;
+        }
+        </style>
+</head>
+    <header>
+        <img class="logo" src="./orange.png" alt="logo">
+<nav>
+    <ul class="nav__links">
+        <li><a href="./Website.html">Home</a></li>
+        <li><a href="./Contactus.html">Contact us</a></li>
+        <li><a href="./payment.html">Payment</a></li>
+        <li class="material-symbols-outlined">Bakery_dining</a></li>
+    </ul>
+</nav>
+ <a class="cta" href="./Contactus.html"><button>Contact</button></a> 
+    </header>
+    <body>
+        <div id="maincontainer">
+            <h2>Happy with our service? consider donating :)</h2>
+            <!--validating the fields when submittng-->
+            <form onsubmit="return validateBilling() && validateCredit()">
+            <fieldset id="mainset">
+                <legend>billing Information (Required)</legend>
+                <div id="container">
+                    <!--using span for the first fieldset to display errors-->
+                    <label for="fname">First name:</label>
+                    <input type="text" id="fname" name="fname" placeholder="First Name"><span id="fnameError" style="color:red"></span><br><br>
+                    <label for="lname">Last name:</label>
+                    <input type="text" id="lname" name="lname" placeholder="Last Name"><span id="lnameError" style="color:red"></span><br><br>
+                    <label for="address">Street Address:</label>
+                    <input type="text" id="address" name="address" placeholder="Your address"><span id="addressError" style="color:red"></span><br><br>
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" placeholder="City"><span id="cityError" style="color:red"></span><br><br>
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state" placeholder="Province"><span id="stateError" style="color:red"></span><br><br>
+                    <label for="postal">Postal Code:</label>
+                    <input type="text" id="postal" name="postal" placeholder="Postal Code"><span id="postalError" style="color:red"></span><br><br>
+                    <label for="country">Country:</label>
+                    <input type="text" id="country" name="country" placeholder="Country"><span id="countryError" style="color:red"></span><br><br>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number"><span id="phoneError" style="color:red"></span><br><br>
+                </div>
+            </fieldset>
+            <fieldset id="mainset">
+                <!--using radio for credit card options an also using img for icons and using same name for all so only one can be chosen-->
+                <legend>Credit Card (required)</legend>
+                
+                <!--using regex in the function to validate credit card format and until its validated the other fields are disabled-->
+                <div id="container">
+                    <label for="cardnumber">Credit Card Number:</label>
+                    <input type="text" id="cardnumber" name="cardnumber" placeholder="xxxx xxxx xxxx xxxx" required oninput="validateCardNumber()"><span id="cardnumberError" style="color:red"></span><br><br>
+                    <label for="expirydate">Expiry Date:</label>
+                    <input type="date" id="expirydate" name="expirydate" required disabled><span id="expirydateError" style="color:red"></span><br><br>
+                    <!--using pattern for CVV so only 3 digits can be entered-->
+                    <label for="csv">CSV:</label>
+                    <input type="text" id="csv" name="csv" placeholder="XXX" required pattern="^\d{3}$" title="Please enter 3 digits only"
+                     disabled><span id="csvError" style="color:red"></span><br><br>
+                </div>
+            
+            </fieldset>
+            <fieldset id="mainset">
+                <!--this set is not mandatory so it can be left empty-->
+            <legend>Additional Information</legend>
+            <div id="container">
+                    <label for="email">Contact Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email Address"><br><br>
+                    <label for="info">Special Notes:</label>
+                    <textarea id="info" name="info" rows="4" cols="50"></textarea><br><br>
+            </div>
+            </fieldset>
+            <input type="submit" value="Submit">
+                </form>
+        </div>
+        <div id="output"></div>
+        <script>
+            function validateBilling() {
+                var fname = document.getElementById("fname").value;
+                var lname = document.getElementById("lname").value;
+                var address = document.getElementById("address").value;
+                var postal = document.getElementById("postal").value;
+                var country = document.getElementById("country").value;
+                var phone = document.getElementById("phone").value;
+                var city = document.getElementById("city").value;
+                var state = document.getElementById("state").value;
+        
+                var isValid = true;
+            
+                var postalPattern = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+            
+                if (fname == "") {
+                    document.getElementById("fnameError").innerHTML = " First name is required.";
+                    isValid = false;
+                }
+                if (lname == "") {
+                    document.getElementById("lnameError").innerHTML = " Last name is required.";
+                    isValid = false;
+                }
+                if (address == "") {
+                    document.getElementById("addressError").innerHTML = " Street address is required.";
+                    isValid = false;
+                }
+                if (city == "") {
+                    document.getElementById("cityError").innerHTML = " City is required.";
+                    isValid = false;
+                }
+                if (state == "") {
+                    document.getElementById("stateError").innerHTML = " State is required.";
+                    isValid = false;
+                }
+                if (postal == "" || !postalPattern.test(postal)) {
+                    document.getElementById("postalError").innerHTML = " Postal code is required and must be in the format 'M1W 2P2'.";
+                    isValid = false;
+                }
+                if (country == "") {
+                    document.getElementById("countryError").innerHTML = " Country is required.";
+                    isValid = false;
+                }
+                if (phone == "") {
+                    document.getElementById("phoneError").innerHTML = " Phone number is required.";
+                    isValid = false;
+                }
+                return isValid;
+            }
+        
+        function validateCardNumber() {
+            var cardnumber = document.getElementById("cardnumber").value;
+            var cardnumberError = document.getElementById("cardnumberError");
+            var expirydate = document.getElementById("expirydate");
+            var csv = document.getElementById("csv");
+        
+            if (/^\d{4} \d{4} \d{4} \d{4}$/.test(cardnumber)) {
+                // If the card number is valid, enable the next fields and clear any error message
+                expirydate.disabled = false;
+                csv.disabled = false;
+                cardnumberError.innerHTML = "";
+            } else {
+                // If the card number is not valid, disable the next fields and show an error message
+                expirydate.disabled = true;
+                csv.disabled = true;
+                cardnumberError.innerHTML = " Credit card number must be in the format '1234 1234 1234 1234'.";
+            }
+        }
+        function displayValues() {
+          var fname = document.getElementById('fname').value;
+          var lname = document.getElementById('lname').value;
+          var address = document.getElementById('address').value;
+          var city = document.getElementById('city').value;
+          var state = document.getElementById('state').value;
+          var postal = document.getElementById('postal').value;
+          var country = document.getElementById('country').value;
+          var phone = document.getElementById('phone').value;
+          var cardnumber = document.getElementById('cardnumber').value;
+          var expirydate = document.getElementById('expirydate').value;
+          var csv = document.getElementById('csv').value;
+        
+          var output = 'First Name: ' + fname +
+                       '<br>Last Name: ' + lname +
+                       '<br>Address: ' + address +
+                       '<br>City: ' + city +
+                       '<br>State: ' + state +
+                       '<br>Postal Code: ' + postal +
+                       '<br>Country: ' + country +
+                       '<br>Phone Number: ' + phone +
+                       '<br>Card Number: ' + cardnumber +
+                       '<br>Expiry Date: ' + expirydate +
+                       '<br>CSV: ' + csv;
+        
+          document.getElementById('output').innerHTML = output;
+        }
+        
+        document.querySelector('form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          displayValues();
+        });
+            </script>
+           
+    </body>
+</html>

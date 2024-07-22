@@ -1,0 +1,30 @@
+{
+  "title": "Contact us",
+  "method": "POST",
+  "action": "https://formsubmit.co/diba.mak@gmail.com",
+  "fields": [
+      {
+          "label": "Full Name",
+          "type": "text",
+          "name": "fullName",
+          "required": true
+      },
+      {
+          "label": "Email",
+          "type": "email",
+          "name": "email",
+          "required": true
+      },
+      {
+          "label": "Message",
+          "type": "textarea",
+          "name": "message",
+          "required": true
+      }
+      
+  ],
+  "submit": {
+      "type": "submit",
+      "value": "Send"
+  }
+}
